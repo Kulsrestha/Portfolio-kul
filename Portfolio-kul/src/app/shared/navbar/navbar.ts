@@ -18,6 +18,21 @@ export class Navbar {
   protected readonly personalInfo = personalInfo;
   protected isOpen = false;
   protected scrolled = false;
+  protected isLightTheme = true;
+
+  constructor() {
+    this.setBodyTheme();
+  }
+
+  protected toggleTheme(): void {
+    this.isLightTheme = !this.isLightTheme;
+    this.setBodyTheme();
+  }
+
+  private setBodyTheme(): void {
+    document.body.classList.toggle('light-theme', this.isLightTheme);
+    document.body.classList.toggle('default-theme', !this.isLightTheme);
+  }
 
   protected readonly navLinks: NavLink[] = [
     { name: 'About', to: 'about' },

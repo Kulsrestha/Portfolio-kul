@@ -6,12 +6,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary-bg': '#1a1a2e',
-        'secondary-bg': '#16213e',
-        'accent-1': '#00f5c3',
-        'accent-2': '#e94560',
-        'text-primary': '#e0e0e0',
-        'text-secondary': '#a0a0a0',
+        'primary-bg': 'var(--color-primary-bg)',
+        'secondary-bg': 'var(--color-secondary-bg)',
+        'accent-1': 'var(--color-accent-1)',
+        'accent-2': 'var(--color-accent-2)',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
       },
       fontFamily: {
         sans: ['"JetBrains Mono"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
