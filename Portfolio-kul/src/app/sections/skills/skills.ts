@@ -20,8 +20,6 @@ export class Skills {
     '/sounds/freesound_community-e6-82016.mp3',
     '/sounds/freesound_community-f6-102819.mp3',
     '/sounds/freesound_community-g6-82013.mp3',
-    '/sounds/freesound_community-sol-101774.mp3',
-    '/sounds/u_df365hdxp7-cinematic-piano-note-362716.mp3',
   ];
 
   protected readonly skills = skills;
