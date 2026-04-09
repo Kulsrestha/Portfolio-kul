@@ -1,1 +1,52 @@
-<p>skills works!</p>
+<section id="skills" class="py-32 bg-primary-bg relative overflow-hidden">
+	<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] pointer-events-none"></div>
+
+	<div class="container mx-auto px-6 relative z-10">
+		<app-section-title text="Technologies I Work With"></app-section-title>
+
+		<div class="max-w-7xl mx-auto mt-20">
+			<div class="flex flex-col gap-16">
+				<div *ngFor="let category of categories" class="w-full reveal-up">
+					<h3 class="text-2xl md:text-3xl font-semibold text-accent-1 mb-8 flex items-center gap-4">
+						<span class="h-[2px] w-12 bg-accent-1/50 inline-block"></span>
+						{{ category.title }}
+					</h3>
+
+					<div class="flex flex-wrap gap-5">
+						<div
+							*ngFor="let skill of category.items"
+							class="flex items-center gap-4 bg-secondary-bg px-6 py-4 rounded-md border border-white/5 hover:border-accent-2/50 hover:shadow-[0_4px_20px_rgba(233,69,96,0.15)] transition-all duration-300 cursor-default skill-card"
+						(mouseenter)="playHoverSound()"
+						>
+							<div class="w-12 h-12 rounded-md flex items-center justify-center bg-primary-bg">
+								<img
+									*ngIf="skill.icon"
+									[src]="'/icons/' + skill.icon + '.svg'"
+									[alt]="skill.name + ' icon'"
+									onerror="this.style.display='none'"
+									class="w-7 h-7"
+								/>
+							</div>
+							<span class="text-text-primary text-lg font-medium">{{ skill.name }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-24 text-center reveal-up">
+				<h3 class="text-lg font-mono text-accent-2 mb-8 tracking-widest uppercase">
+					Core Competencies
+				</h3>
+
+				<div class="flex flex-wrap justify-center gap-4">
+					<span
+						*ngFor="let competency of skills.coreCompetencies"
+						class="text-text-secondary text-base md:text-lg border border-text-secondary/20 px-6 py-2 rounded-full hover:text-white hover:border-accent-1 transition-colors duration-300"
+					>
+						{{ competency }}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

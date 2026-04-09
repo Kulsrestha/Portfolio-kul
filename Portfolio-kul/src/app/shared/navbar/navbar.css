@@ -1,0 +1,15 @@
+nav {
+  animation: nav-slide-in 0.8s ease-out both;
+}
+
+@keyframes nav-slide-in {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

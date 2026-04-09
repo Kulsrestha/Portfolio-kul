@@ -1,4 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap");
+
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 100px;
+	}
+
+	body {
+		@apply bg-primary-bg text-text-primary font-sans antialiased;
+	}
+
+	::selection {
+		@apply bg-accent-1 text-primary-bg;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-secondary-bg;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-accent-1 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-opacity-80;
+}

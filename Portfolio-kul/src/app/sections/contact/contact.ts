@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { personalInfo } from '../../data/portfolio-data';
 
 @Component({
   selector: 'app-contact',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact {}
+export class Contact {
+  protected readonly personalInfo = personalInfo;
+}

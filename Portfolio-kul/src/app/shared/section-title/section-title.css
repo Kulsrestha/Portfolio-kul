@@ -1,0 +1,20 @@
+.section-title {
+  animation: section-title-in 0.5s ease both;
+}
+
+.section-title-shadow {
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@keyframes section-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

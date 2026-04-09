@@ -1,0 +1,15 @@
+.reveal-x {
+	animation: reveal-x 0.5s ease both;
+}
+
+@keyframes reveal-x {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

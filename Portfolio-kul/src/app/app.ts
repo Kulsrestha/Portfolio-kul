@@ -5,20 +5,22 @@ import { Contact } from './sections/contact/contact';
 import { Footer } from './sections/footer/footer';
 import { Hero } from './sections/hero/hero';
 import { Qualification } from './sections/qualification/qualification';
-import { Services } from './sections/services/services';
 import { Skills } from './sections/skills/skills';
+import { Navbar } from './shared/navbar/navbar';
+import { ScrollToTop } from './shared/scroll-to-top/scroll-to-top';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    Navbar,
     Hero,
     About,
     Skills,
-    Qualification,
-    Services,
     Projects,
+    Qualification,
     Contact,
-    Footer
+    Footer,
+    ScrollToTop,
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']

@@ -1,0 +1,63 @@
+.blob {
+	will-change: transform;
+}
+
+.blob-one {
+	animation: blob-move-1 10s ease-in-out infinite;
+}
+
+.blob-two {
+	animation: blob-move-2 12s ease-in-out infinite;
+}
+
+.typing-cursor {
+	animation: cursor-blink 1s infinite;
+}
+
+.chevron {
+	animation: bounce 2s infinite;
+}
+
+@keyframes blob-move-1 {
+	0% {
+		transform: translate(0, 0) scale(1);
+	}
+	50% {
+		transform: translate(100px, -50px) scale(1.2);
+	}
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+}
+
+@keyframes blob-move-2 {
+	0% {
+		transform: translate(0, 0) scale(1);
+	}
+	50% {
+		transform: translate(-100px, 50px) scale(1.5);
+	}
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+}
+
+@keyframes cursor-blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+@keyframes bounce {
+	0%,
+	100% {
+		transform: translate(-50%, 0);
+	}
+	50% {
+		transform: translate(-50%, 10px);
+	}
+}
