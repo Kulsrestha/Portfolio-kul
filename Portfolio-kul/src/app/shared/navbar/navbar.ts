@@ -102,12 +102,8 @@ export class Navbar implements OnDestroy {
     const element = document.getElementById(sectionId);
     if (!element) return;
 
-    this.isTransitioning = true;
-    this.spawnBats(() => {
-      const top = element.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top, behavior: 'smooth' });
-      this.isTransitioning = false;
-    });
+    const top = element.getBoundingClientRect().top + window.scrollY - 100;
+    window.scrollTo({ top, behavior: 'smooth' });
   }
 
   // ── BAT TRANSITION ──────────────────────────────────────────────
