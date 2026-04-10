@@ -4,14 +4,16 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
+        "installCommand": "npm install",
+        "buildCommand": "npm run build",
         "distDir": "dist/Portfolio-kul"
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
