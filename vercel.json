@@ -4,7 +4,7 @@
       "src": "Portfolio-kul/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "Portfolio-kul/dist/Portfolio-kul"
+        "distDir": "dist/Portfolio-kul"
       }
     }
   ],
