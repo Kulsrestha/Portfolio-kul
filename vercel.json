@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "Portfolio-kul/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Portfolio-kul/dist/Portfolio-kul"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
