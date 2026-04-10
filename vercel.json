@@ -1,13 +1,4 @@
 {
-  "builds": [
-    {
-      "src": "Portfolio-kul/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/Portfolio-kul"
-      }
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
