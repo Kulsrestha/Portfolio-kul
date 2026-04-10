@@ -46,7 +46,13 @@ body.light-theme {
 
 	body {
 		@apply bg-primary-bg text-text-primary font-sans antialiased;
-		transition: background-color 0.3s ease, color 0.3s ease;
+		transition: background-color 0.9s ease, color 0.9s ease, border-color 0.9s ease, box-shadow 0.9s ease, fill 0.9s ease, stroke 0.9s ease;
+	}
+
+	.theme-transitioning *,
+	.theme-transitioning *::before,
+	.theme-transitioning *::after {
+		transition: background-color 0.9s ease, color 0.9s ease, border-color 0.9s ease, box-shadow 0.9s ease, fill 0.9s ease, stroke 0.9s ease !important;
 	}
 
 	::selection {

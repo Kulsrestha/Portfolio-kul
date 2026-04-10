@@ -40,7 +40,9 @@
 
       <button
         type="button"
-        (click)="toggleTheme()"
+        (click)="toggleTheme($event)"
+        [disabled]="isTransitioning"
+        [class.transitioning]="isTransitioning"
         class="flex h-12 w-12 items-center justify-center rounded-full border border-text-secondary text-text-secondary hover:bg-text-secondary/10 transition-all duration-300"
         aria-label="Toggle theme"
       >
@@ -78,7 +80,9 @@
 
       <button
         type="button"
-        (click)="toggleTheme()"
+        (click)="toggleTheme($event)"
+        [disabled]="isTransitioning"
+        [class.transitioning]="isTransitioning"
         class="flex h-12 w-12 items-center justify-center rounded-full border border-text-secondary text-text-secondary hover:bg-text-secondary/10 transition-all duration-300"
         aria-label="Toggle theme"
       >

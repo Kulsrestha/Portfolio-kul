@@ -13,3 +13,10 @@ nav {
     opacity: 1;
   }
 }
+
+/* Disable nav link pointer events while bats are flying */
+nav button[disabled],
+nav button.transitioning {
+  pointer-events: none;
+  opacity: 0.6;
+}
