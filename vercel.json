@@ -4,12 +4,11 @@
       "src": "Portfolio-kul/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "installCommand": "npm install",
-        "buildCommand": "npm run build",
-        "distDir": "Portfolio-kul/dist/Portfolio-kul"
+        "distDir": "dist/Portfolio-kul"
       }
     }
   ],
+  "outputDirectory": "Portfolio-kul/dist/Portfolio-kul",
   "rewrites": [
     {
       "source": "/(.*)",
