@@ -1,16 +1,94 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
+import type { ISourceOptions } from '@tsparticles/engine';
+import { loadSlim } from '@tsparticles/slim';
 import { heroTypewriterLines, personalInfo } from '../../data/portfolio-data';
 
 @Component({
   selector: 'app-hero',
-  imports: [CommonModule],
+  imports: [CommonModule, NgxParticlesModule],
   standalone: true,
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
 export class Hero implements OnInit, OnDestroy {
   protected readonly personalInfo = personalInfo;
+  protected readonly particlesId = 'hero-particles';
+  protected readonly particlesOptions: ISourceOptions = {
+    fullScreen: {
+      enable: false,
+    },
+    background: {
+      color: {
+        value: 'transparent',
+      },
+    },
+    detectRetina: true,
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: 'grab',
+        },
+        resize: {
+          enable: true,
+        },
+      },
+      modes: {
+        grab: {
+          distance: 150,
+          links: {
+            opacity: 0.4,
+          },
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: '#8c8c8c',
+      },
+      links: {
+        color: '#777777',
+        distance: 160,
+        enable: true,
+        opacity: 0.24,
+        width: 1,
+      },
+      move: {
+        direction: 'none',
+        enable: true,
+        outModes: {
+          default: 'bounce',
+        },
+        random: false,
+        speed: 0.45,
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+        },
+        value: 62,
+      },
+      opacity: {
+        value: {
+          min: 0.25,
+          max: 0.75,
+        },
+      },
+      shape: {
+        type: 'circle',
+      },
+      size: {
+        value: {
+          min: 1,
+          max: 4,
+        },
+      },
+    },
+  };
   protected typedText = '';
 
   private phraseIndex = 0;
@@ -18,9 +96,17 @@ export class Hero implements OnInit, OnDestroy {
   private deleting = false;
   private timerId: number | undefined;
 
-  constructor(private zone: NgZone, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private zone: NgZone,
+    private cdr: ChangeDetectorRef,
+    private readonly ngParticlesService: NgParticlesService,
+  ) {}
 
   ngOnInit(): void {
+    void this.ngParticlesService.init(async (engine) => {
+      await loadSlim(engine);
+    });
+
     this.zone.runOutsideAngular(() => {
       this.timerId = window.setTimeout(() => this.zone.run(() => this.runTypewriter()), 200);
     });

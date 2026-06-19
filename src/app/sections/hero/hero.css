@@ -7,6 +7,19 @@
 	overflow: hidden;
 }
 
+.hero-particles {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.hero-particles ::ng-deep canvas {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+}
+
 #hero::before {
 	content: '';
 	position: absolute;
@@ -34,6 +47,7 @@
 .blob-two {
 	border-radius: 9999px;
 	opacity: 0.16;
+	z-index: 2;
 }
 
 .blob-one {
