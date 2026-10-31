@@ -6,8 +6,17 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="ironman.jpg">
+  <style>
+    /* Shown until Angular starts, so the first thing on screen is already the loader's logo. */
+    html, body { margin: 0; background: #1a1a2e; }
+    .boot-logo {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      font: 700 3rem monospace; letter-spacing: -0.05em; color: rgba(255, 255, 255, 0.14);
+    }
+    @media (min-width: 768px) { .boot-logo { font-size: 4.5rem; } }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root><div class="boot-logo">&lt;Kul /&gt;</div></app-root>
 </body>
 </html>

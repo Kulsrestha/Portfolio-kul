@@ -75,6 +75,7 @@ export class Navbar implements OnDestroy {
     { name: 'Skills', to: 'skills' },
     { name: 'Projects', to: 'projects' },
     { name: 'Experience', to: 'experience' },
+    { name: 'Terminal', to: 'terminal' },
     { name: 'Contact', to: 'contact' },
   ];
 

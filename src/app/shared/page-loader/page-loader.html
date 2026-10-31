@@ -1,0 +1,24 @@
+<div
+	*ngIf="visible()"
+	class="page-loader fixed inset-0 z-[100] bg-primary-bg overflow-hidden flex items-center justify-center"
+	[class.leaving]="leaving()"
+	role="status"
+	aria-label="Loading portfolio"
+>
+	<app-flowing-waves></app-flowing-waves>
+	<app-electric-sparks></app-electric-sparks>
+
+	<div class="loader-core relative z-10 font-mono" aria-hidden="true">
+		<span class="core-disc" [style.--charge]="progress() / 100"></span>
+
+		<div class="relative text-5xl md:text-7xl font-bold tracking-tighter whitespace-nowrap">
+			<span class="logo-empty">&lt;Kul /&gt;</span>
+			<span class="logo-charged absolute inset-0" [style.clip-path]="'inset(-20% ' + (100 - progress()) + '% -20% 0)'">&lt;Kul /&gt;</span>
+			<span #center class="absolute left-1/2 top-1/2"></span>
+		</div>
+
+		<p class="loader-status absolute left-1/2 top-full -translate-x-1/2 mt-6 text-sm text-text-secondary whitespace-nowrap">
+			{{ status() }} · {{ percent() }}%
+		</p>
+	</div>
+</div>
