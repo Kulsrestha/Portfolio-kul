@@ -66,18 +66,22 @@ export const skills = {
   languages: [
     { name: 'TypeScript', icon: 'TypeScript' },
     { name: 'JavaScript', icon: 'JavaScript' },
+    { name: 'C#', icon: 'CSharp' },
     {name: 'C++', icon: 'C++ (CPlusPlus)'},
     { name: 'HTML', icon: 'HTML5' },
     { name: 'CSS', icon: 'CSS3' },
     { name: 'MySQL', icon: 'MySQL' },
+    { name: 'PostgreSQL', icon: 'PostgreSQL' },
   ] as SkillItem[],
   frameworksAndLibraries: [
     { name: 'Angular', icon: 'Angular' },
+    { name: '.NET Core', icon: 'DotNetCore' },
     { name: 'Ionic (Mobile)', icon: 'Ionic' },
     { name: 'Firebase', icon: 'Firebase' },
   ] as SkillItem[],
   toolsAndPlatforms: [
     { name: 'Git / GitLab / GitHub', icon: 'Git' },
+    { name: 'Docker', icon: 'Docker' },
     { name: 'Postman', icon: 'Postman' },
     { name: 'Mockoon', icon: 'Mockoon' },
   ] as SkillItem[],
