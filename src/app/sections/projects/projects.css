@@ -2,6 +2,174 @@
 	animation: reveal-up 0.6s ease both;
 }
 
+.tilt-surface {
+	transition: transform 0.45s ease-out;
+}
+
+.is-powered .tilt-surface {
+	transition-duration: 0.12s;
+	will-change: transform;
+}
+
+/* Switched off: a dim, grey screen. */
+.screen-image {
+	filter: grayscale(1) brightness(0.72);
+	transition: filter 0.4s ease;
+}
+
+.is-powered .screen-image {
+	filter: none;
+	animation: crt-power-on 0.75s linear both;
+}
+
+.screen-lines {
+	opacity: 0;
+	background: repeating-linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0.55) 0,
+		rgba(0, 0, 0, 0.55) 1px,
+		transparent 1px,
+		transparent 3px
+	);
+	transition: opacity 0.3s ease;
+}
+
+.is-powered .screen-lines {
+	animation: crt-lines-settle 0.9s ease-out both;
+}
+
+.current-trace {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	pointer-events: none;
+	opacity: 0;
+	filter: drop-shadow(0 0 4px #38a8ff);
+	transition: opacity 0.25s ease;
+}
+
+.is-powered .current-trace {
+	opacity: 1;
+}
+
+.current-trace rect {
+	fill: none;
+}
+
+.trace-wire {
+	stroke: rgba(56, 168, 255, 0.35);
+	stroke-width: 1;
+}
+
+/* Two comets chase each other round the border; the dash pattern repeats every 50 units. */
+.trace-comet {
+	stroke: #38a8ff;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-dasharray: 18 32;
+	animation: current-run 1.8s linear infinite paused;
+}
+
+.trace-head {
+	stroke: #e6f7ff;
+	stroke-width: 2.5;
+	stroke-linecap: round;
+	stroke-dasharray: 2 48;
+	animation: current-run-head 1.8s linear infinite paused;
+}
+
+.is-powered .trace-comet,
+.is-powered .trace-head {
+	animation-play-state: running;
+}
+
+.card-glow {
+	background: rgba(56, 168, 255, 0.2);
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+
+.is-powered .card-glow {
+	opacity: 1;
+}
+
+/* A bright line opens into the picture, then the brightness stutters and settles. */
+@keyframes crt-power-on {
+	0% {
+		transform: scaleY(0.01);
+		filter: grayscale(1) brightness(3);
+	}
+	14% {
+		transform: scaleY(0.02);
+		filter: grayscale(1) brightness(3);
+	}
+	28% {
+		transform: scaleY(1);
+		filter: grayscale(0.6) brightness(2);
+	}
+	36% {
+		filter: grayscale(0.5) brightness(0.45);
+	}
+	44% {
+		filter: grayscale(0.3) brightness(1.6);
+	}
+	52% {
+		filter: grayscale(0.3) brightness(0.7);
+	}
+	62% {
+		filter: grayscale(0.1) brightness(1.25);
+	}
+	72% {
+		filter: grayscale(0) brightness(0.85);
+	}
+	100% {
+		transform: scaleY(1);
+		filter: grayscale(0) brightness(1);
+	}
+}
+
+@keyframes crt-lines-settle {
+	from {
+		opacity: 0.8;
+	}
+	to {
+		opacity: 0.1;
+	}
+}
+
+@keyframes current-run {
+	from {
+		stroke-dashoffset: 50;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+/* Same speed as the comet, shifted so it rides on the comet's front end. */
+@keyframes current-run-head {
+	from {
+		stroke-dashoffset: 34;
+	}
+	to {
+		stroke-dashoffset: -16;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.is-powered .screen-image,
+	.is-powered .screen-lines {
+		animation: none;
+	}
+
+	.trace-comet,
+	.trace-head {
+		display: none;
+	}
+}
+
 @keyframes reveal-up {
 	from {
 		opacity: 0;

@@ -1,9 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
 import type { ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import { heroTypewriterLines, personalInfo } from '../../data/portfolio-data';
+import { LoaderState } from '../../shared/page-loader/loader-state';
+
+// Starts once the name has finished flickering on and the rest of the hero has appeared.
+const TYPEWRITER_DELAY = 2200;
 
 @Component({
   selector: 'app-hero',
@@ -100,15 +104,18 @@ export class Hero implements OnInit, OnDestroy {
     private zone: NgZone,
     private cdr: ChangeDetectorRef,
     private readonly ngParticlesService: NgParticlesService,
-  ) {}
+    protected readonly loaderState: LoaderState,
+  ) {
+    effect(() => {
+      if (this.loaderState.finished()) {
+        this.startTypewriter();
+      }
+    });
+  }
 
   ngOnInit(): void {
     void this.ngParticlesService.init(async (engine) => {
       await loadSlim(engine);
-    });
-
-    this.zone.runOutsideAngular(() => {
-      this.timerId = window.setTimeout(() => this.zone.run(() => this.runTypewriter()), 200);
     });
   }
 
@@ -126,6 +133,12 @@ export class Hero implements OnInit, OnDestroy {
 
     const top = element.getBoundingClientRect().top + window.scrollY - 90;
     window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  private startTypewriter(): void {
+    this.zone.runOutsideAngular(() => {
+      this.timerId = window.setTimeout(() => this.zone.run(() => this.runTypewriter()), TYPEWRITER_DELAY);
+    });
   }
 
   private runTypewriter(): void {

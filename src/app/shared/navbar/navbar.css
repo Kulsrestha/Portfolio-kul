@@ -2,6 +2,12 @@ nav {
   animation: nav-slide-in 0.8s ease-out both;
 }
 
+/* Hold the slide-in until the page loader lifts. */
+nav.nav-waiting {
+  animation: none;
+  opacity: 0;
+}
+
 @keyframes nav-slide-in {
   from {
     transform: translateY(-100px);

@@ -10,11 +10,13 @@ import { Terminal } from './sections/terminal/terminal';
 import { Navbar } from './shared/navbar/navbar';
 import { PageLoader } from './shared/page-loader/page-loader';
 import { ScrollToTop } from './shared/scroll-to-top/scroll-to-top';
+import { ScrollWire } from './shared/scroll-wire/scroll-wire';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     PageLoader,
+    ScrollWire,
     Navbar,
     Hero,
     About,

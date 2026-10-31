@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy } from '@angular/core';
 import { personalInfo } from '../../data/portfolio-data';
+import { LoaderState } from '../page-loader/loader-state';
 
 interface NavLink {
   name: string;
@@ -31,6 +32,7 @@ interface BatInstance {
 })
 export class Navbar implements OnDestroy {
   protected readonly personalInfo = personalInfo;
+  protected readonly loaderState = inject(LoaderState);
   protected isOpen = false;
   protected scrolled = false;
   protected isLightTheme = true;

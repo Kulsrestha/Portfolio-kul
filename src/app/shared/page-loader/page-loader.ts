@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, ElementRef, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { ElectricSparks } from '../electric-sparks/electric-sparks';
 import { FlowingWaves } from '../flowing-waves/flowing-waves';
+import { LoaderState } from './loader-state';
 
 // Long enough to see the logo charge up, even when the page loads instantly.
 const MIN_DURATION = 1800;
@@ -28,6 +29,8 @@ const STATUS_STEPS = [
 export class PageLoader implements OnInit, OnDestroy {
   @ViewChild(ElectricSparks) private sparks!: ElectricSparks;
   @ViewChild('center') private center!: ElementRef<HTMLElement>;
+
+  private readonly loaderState = inject(LoaderState);
 
   protected readonly progress = signal(0);
   protected readonly visible = signal(true);
@@ -92,6 +95,7 @@ export class PageLoader implements OnInit, OnDestroy {
     this.frame = null;
     this.progress.set(100);
     this.leaving.set(true);
+    this.loaderState.finish();
 
     for (let i = 0; i < BURST_COUNT; i++) {
       this.sparks.burstFrom(this.center.nativeElement);

@@ -1,5 +1,6 @@
 <nav
   class="fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-6xl rounded-md transition-all duration-300"
+  [class.nav-waiting]="!loaderState.finished()"
   [class.bg-secondary-bg]="scrolled"
   [class.bg-opacity-20]="scrolled"
   [class.backdrop-blur-lg]="scrolled"
